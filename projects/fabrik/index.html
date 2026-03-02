@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FABRIK POTTERY — 3D Motion | Taeyul Kwon</title>
+    <meta name="description" content="FABRIK POTTERY 3D 모션 그래픽 프로젝트. 세라믹 제품 3D 비주얼 영상 제작.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="../project.css">
+</head>
+
+<body>
+    <header class="project-header">
+        <a href="../../index.html" class="project-logo">TK.</a>
+        <div class="project-header-left">
+            <span class="project-name">FABRIK POTTERY</span>
+            <span class="project-sub">3D MOTION / 07</span>
+        </div>
+        <span class="project-year">2024</span>
+    </header>
+
+    <div class="project-main">
+        <div class="project-info">
+            <div>
+                <div class="project-meta">
+                    <div class="meta-row">
+                        <span class="meta-label">Client</span>
+                        <span class="meta-value">PERSONAL</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Category</span>
+                        <span class="meta-value">3D MOTION GRAPHIC</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Date</span>
+                        <span class="meta-value">2024</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Role</span>
+                        <span class="meta-value">
+                            컨셉 기획<br>
+                            3D 모델링<br>
+                            텍스처링 및 라이팅<br>
+                            애니메이션 및 렌더링
+                        </span>
+                    </div>
+                </div>
+
+                <div class="project-overview">
+                    <p class="overview-text">
+                        FABRIK POTTERY는 클래식한 디자인을 현대적으로 재해석한 세라믹 브랜드로, 시각적인 아름다움과 실용성을 함께 고려한 제품을 선보입니다.
+                    </p>
+                    <p class="overview-text" style="margin-top: 16px;">
+                        이번 프로젝트에서는 두께감 있는 형태와 균형 잡힌 구조, 그리고 안정적인 그립감을 제공하는 핸들 디자인 등 제품의 조형적 특징을 중심으로 3D 영상을 제작했습니다.
+                    </p>
+                    <p class="overview-text" style="margin-top: 16px;">
+                        다양한 공간과 어울리는 연출을 통해 FABRIK POTTERY가 단순한 생활용품을 넘어, 인테리어 오브제로서 공간의 분위기를 완성하는 제품임을 효과적으로 전달하고자
+                        했습니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="project-back">
+                <a href="../../index.html" class="back-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    BACK
+                </a>
+            </div>
+        </div>
+
+        <div class="project-gallery">
+            <video class="gallery-video visible" autoplay muted loop playsinline>
+                <source src="../../img/FABRIK POTTERY  Project/Fabrik pottery 1.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <nav class="project-nav">
+        <a href="../rawrow/index.html" class="nav-item">
+            <span class="nav-label">← Previous Project</span>
+            <span class="nav-title">RAWROW</span>
+        </a>
+        <a href="../surge/index.html" class="nav-item" style="text-align: right;">
+            <span class="nav-label">Next Project →</span>
+            <span class="nav-title">SURGE</span>
+        </a>
+    </nav>
+
+    <script>
+        const items = document.querySelectorAll('.gallery-img, .gallery-video');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        items.forEach(item => observer.observe(item));
+    </script>
+</body>
+
+</html>

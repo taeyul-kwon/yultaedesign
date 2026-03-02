@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melon Music — 2D Motion | Taeyul Kwon</title>
+    <meta name="description" content="Melon Music 2D 모션 그래픽 프로젝트. 음원 스트리밍 플랫폼 프로모션 영상 제작.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="../project.css">
+</head>
+
+<body>
+    <header class="project-header">
+        <a href="../../index.html" class="project-logo">TK.</a>
+        <div class="project-header-left">
+            <span class="project-name">Melon Music</span>
+            <span class="project-sub">2D MOTION / 03</span>
+        </div>
+        <span class="project-year">2024</span>
+    </header>
+
+    <div class="project-main">
+        <div class="project-info">
+            <div>
+                <div class="project-meta">
+                    <div class="meta-row">
+                        <span class="meta-label">Client</span>
+                        <span class="meta-value">PERSONAL</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Category</span>
+                        <span class="meta-value">2D MOTION GRAPHIC</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Date</span>
+                        <span class="meta-value">2024</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Role</span>
+                        <span class="meta-value">
+                            컨셉 기획<br>
+                            스토리보드 제작<br>
+                            2D 모션 그래픽 제작<br>
+                            사운드 디자인
+                        </span>
+                    </div>
+                </div>
+
+                <div class="project-overview">
+                    <p class="overview-text">
+                        Melon은 한국을 대표하는 음원 스트리밍 플랫폼으로, 사용자의 취향을 기반으로 다양한 음악 경험을 제공하는 서비스입니다.
+                    </p>
+                    <p class="overview-text" style="margin-top: 16px;">
+                        이번 프로젝트에서는 취향 중심의 홈 구성, 트렌드 확인 탭, 음악 방송, 맞춤 태그 추천, 나만의 음악 서랍 등 Melon의 주요 기능을 쉽고 직관적으로 전달하는 2D 모션
+                        그래픽 영상을 제작했습니다.
+                    </p>
+                    <p class="overview-text" style="margin-top: 16px;">
+                        해당 영상은 Melon이 단순한 음악 재생 서비스를 넘어, 취향 기반의 음악 탐색과 개인화된 경험을 제공하는 플랫폼임을 효과적으로 보여주는 데 목적을 두었습니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="project-back">
+                <a href="../../index.html" class="back-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    BACK
+                </a>
+            </div>
+        </div>
+
+        <div class="project-gallery">
+            <video class="gallery-video visible" autoplay muted loop playsinline>
+                <source src="../../img/MELON  Project/MELON motion_Final.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <nav class="project-nav">
+        <a href="../dashy/index.html" class="nav-item">
+            <span class="nav-label">← Previous Project</span>
+            <span class="nav-title">DASHY</span>
+        </a>
+        <a href="../britz/index.html" class="nav-item" style="text-align: right;">
+            <span class="nav-label">Next Project →</span>
+            <span class="nav-title">BRITZ</span>
+        </a>
+    </nav>
+
+    <script>
+        const items = document.querySelectorAll('.gallery-img, .gallery-video');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        items.forEach(item => observer.observe(item));
+    </script>
+</body>
+
+</html>

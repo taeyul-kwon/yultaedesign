@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAWROW — 3D Motion | Taeyul Kwon</title>
+    <meta name="description" content="RAWROW R TRUNK 3D 모션 그래픽 프로젝트. 여행용 캐리어 제품 영상 제작.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="../project.css">
+</head>
+
+<body>
+    <header class="project-header">
+        <a href="../../index.html" class="project-logo">TK.</a>
+        <div class="project-header-left">
+            <span class="project-name">RAWROW</span>
+            <span class="project-sub">3D MOTION / 06</span>
+        </div>
+        <span class="project-year">2024</span>
+    </header>
+
+    <div class="project-main">
+        <div class="project-info">
+            <div>
+                <div class="project-meta">
+                    <div class="meta-row">
+                        <span class="meta-label">Client</span>
+                        <span class="meta-value">PERSONAL</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Category</span>
+                        <span class="meta-value">3D MOTION GRAPHIC</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Date</span>
+                        <span class="meta-value">2024</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Role</span>
+                        <span class="meta-value">
+                            컨셉 기획<br>
+                            3D 모델링<br>
+                            텍스처링 및 라이팅<br>
+                            애니메이션 및 렌더링
+                        </span>
+                    </div>
+                </div>
+
+                <div class="project-overview">
+                    <p class="overview-text">
+                        RAWROW의 R TRUNK는 '보이지 않는 기능'까지 고려해 설계된 여행용 캐리어로, 많은 짐을 쉽고 편하게 이동할 수 있도록 디자인된 제품입니다.
+                    </p>
+                    <p class="overview-text" style="margin-top: 16px;">
+                        이번 프로젝트에서는 저소음 휠, 잠금 장치, 무게 측정 손잡이, 커스텀 그립, 견고한 바디 등 R TRUNK의 주요 기능과 구조적 특징을 중심으로 3D 모션 영상을
+                        제작했습니다.
+                    </p>
+                    <p class="overview-text" style="margin-top: 16px;">
+                        어두운 배경과 클로즈업 연출을 통해 제품의 디테일과 완성도를 강조했으며, 이를 통해 R TRUNK가 단순한 캐리어를 넘어 기능성과 내구성을 모두 갖춘 제품임을 효과적으로
+                        전달하고자 했습니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="project-back">
+                <a href="../../index.html" class="back-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    BACK
+                </a>
+            </div>
+        </div>
+
+        <div class="project-gallery">
+            <video class="gallery-video visible" autoplay muted loop playsinline>
+                <source src="../../img/RAWROW Project/RAWROW 1.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <nav class="project-nav">
+        <a href="../burberry/index.html" class="nav-item">
+            <span class="nav-label">← Previous Project</span>
+            <span class="nav-title">BURBERRY HERO</span>
+        </a>
+        <a href="../fabrik/index.html" class="nav-item" style="text-align: right;">
+            <span class="nav-label">Next Project →</span>
+            <span class="nav-title">FABRIK POTTERY</span>
+        </a>
+    </nav>
+
+    <script>
+        const items = document.querySelectorAll('.gallery-img, .gallery-video');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        items.forEach(item => observer.observe(item));
+    </script>
+</body>
+
+</html>

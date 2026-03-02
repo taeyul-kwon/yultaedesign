@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Britz — 3D Motion | Taeyul Kwon</title>
+    <meta name="description" content="Britz BT4000 ANC 3D 모션 그래픽 프로젝트. 컨셉 기획, 모델링, 텍스처링, 애니메이션 및 렌더링.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="../project.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="project-header">
+        <a href="../../index.html" class="project-logo">TK.</a>
+        <div class="project-header-left">
+            <span class="project-name">Britz</span>
+            <span class="project-sub">3D MOTION / 04</span>
+        </div>
+        <span class="project-year">2024</span>
+    </header>
+
+    <!-- Main 2-Column Layout -->
+    <div class="project-main">
+        <!-- Left: Project Info -->
+        <div class="project-info">
+            <div>
+                <div class="project-meta">
+                    <div class="meta-row">
+                        <span class="meta-label">Client</span>
+                        <span class="meta-value">PERSONAL</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Category</span>
+                        <span class="meta-value">3D MOTION GRAPHIC</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Date</span>
+                        <span class="meta-value">2024</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Role</span>
+                        <span class="meta-value">
+                            컨셉 기획<br>
+                            모델링<br>
+                            텍스처링 및 라이팅<br>
+                            애니메이션 및 렌더링
+                        </span>
+                    </div>
+                </div>
+
+                <div class="project-overview">
+                    <p class="overview-text">
+                        BRITZ BT4000 ANC는 스마트 기기와 안정적인 무선 연결이 가능한 유·무선 헤드폰으로, 선명한 사운드와 편안한 착용감을 제공하는 제품입니다.
+                    </p>
+                    <p class="overview-text" style="margin-top: 16px;">
+                        이번 프로젝트에서는 부드러운 가죽 이어캡과 경량 헤어밴드가 주는 편안함, 그리고 제품의 주요 기능과 디자인을 중심으로 3D 모션 영상을 제작했습니다.
+                    </p>
+                    <p class="overview-text" style="margin-top: 16px;">
+                        또한 블랙은 견고함, 아이보리는 부드러움, 화이트는 자유롭고 깨끗한 이미지를 표현하여, 컬러별로 전달되는 제품의 감성과 분위기를 시각적으로 연출했습니다. 이를 통해 제품의
+                        기능뿐만 아니라 사용 경험과 브랜드 이미지를 효과적으로 전달하고자 했습니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="project-back">
+                <a href="../../index.html" class="back-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    BACK
+                </a>
+            </div>
+        </div>
+
+        <!-- Right: Video Gallery -->
+        <div class="project-gallery">
+            <video class="gallery-video visible" autoplay muted loop playsinline>
+                <source src="../../img/BRITZ Project/britz motion 1.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <!-- Project Navigation -->
+    <nav class="project-nav">
+        <a href="../melon/index.html" class="nav-item">
+            <span class="nav-label">← Previous Project</span>
+            <span class="nav-title">MELON MUSIC</span>
+        </a>
+        <a href="../burberry/index.html" class="nav-item" style="text-align: right;">
+            <span class="nav-label">Next Project →</span>
+            <span class="nav-title">BURBERRY HERO</span>
+        </a>
+    </nav>
+
+    <script>
+        // Scroll-based reveal
+        const items = document.querySelectorAll('.gallery-img, .gallery-video');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        items.forEach(item => observer.observe(item));
+    </script>
+</body>
+
+</html>
