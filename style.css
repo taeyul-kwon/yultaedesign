@@ -727,6 +727,48 @@ img {
     line-height: 1.8;
 }
 
+.about-strengths {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-gray-100);
+}
+
+.strengths-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-md);
+}
+
+.strengths-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.strength-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.strength-number {
+    font-family: var(--font-condensed);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-blue);
+    min-width: 20px;
+}
+
+.strength-text {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-gray-700);
+    line-height: 1.5;
+}
+
 /* --- Contact Section --- */
 .contact {
     padding: var(--space-2xl) var(--space-lg);
