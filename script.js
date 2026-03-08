@@ -152,17 +152,20 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const el = entry.target;
-                const target = parseInt(el.textContent);
-                const suffix = el.textContent.replace(/\d/g, '');
+                const text = el.textContent;
+                const target = parseFloat(text);
+                const suffix = text.replace(/[\d.]/g, '');
+                const decimals = (text.split('.')[1] || '').replace(/\D/g, '').length;
                 let current = 0;
-                const increment = Math.ceil(target / 30);
+                const steps = 30;
+                const increment = target / steps;
                 const timer = setInterval(() => {
                     current += increment;
                     if (current >= target) {
                         current = target;
                         clearInterval(timer);
                     }
-                    el.textContent = current + suffix;
+                    el.textContent = (decimals > 0 ? current.toFixed(decimals) : Math.ceil(current)) + suffix;
                 }, 40);
                 statsObserver.unobserve(el);
             }
