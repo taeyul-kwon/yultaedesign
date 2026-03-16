@@ -191,6 +191,16 @@ img {
     overflow: hidden;
 }
 
+.particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
 .hero-name-wrapper {
     margin-bottom: var(--space-lg);
     overflow: hidden;
@@ -253,17 +263,23 @@ img {
 
 .role-line {
     display: block;
-    color: var(--color-blue);
+    color: transparent;
+    -webkit-text-stroke: 2px var(--color-blue);
     font-family: var(--font-condensed);
     font-weight: 700;
     white-space: nowrap;
-    cursor: default;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.role-line:hover {
+    -webkit-text-stroke: 2px rgba(55, 95, 255, 0.6);
 }
 
 .role-char {
     display: inline-block;
     transition: opacity 0.3s ease;
-    cursor: default;
+    cursor: pointer;
 }
 
 .role-animation.char-hover .role-char {
@@ -275,7 +291,15 @@ img {
 }
 
 .role-fixed {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--color-blue);
+}
+
+/* 클릭 시 색 채우기 */
+.role-char.filled {
     color: var(--color-blue);
+    -webkit-text-stroke: 0;
+    transition: color 0.3s ease;
 }
 
 @keyframes slideUp {

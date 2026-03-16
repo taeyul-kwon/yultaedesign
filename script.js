@@ -27,6 +27,97 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- 글자 클릭 시 색 채우기 ---
+    document.querySelectorAll('.role-char').forEach(char => {
+        char.addEventListener('click', () => {
+            char.classList.toggle('filled');
+        });
+    });
+
+    // --- 히어로 부유 파티클 시스템 ---
+    const canvas = document.getElementById('particleCanvas');
+    const heroEl = document.getElementById('hero');
+    if (canvas && heroEl) {
+        const ctx = canvas.getContext('2d');
+        let mouse = { x: -9999, y: -9999 };
+        const PARTICLE_COUNT = 1000;
+        const MOUSE_RADIUS = 120;
+        const particles = [];
+
+        function resizeCanvas() {
+            canvas.width = heroEl.offsetWidth;
+            canvas.height = heroEl.offsetHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        heroEl.addEventListener('mousemove', (e) => {
+            const rect = heroEl.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+        heroEl.addEventListener('mouseleave', () => {
+            mouse.x = -9999;
+            mouse.y = -9999;
+        });
+
+        class FloatingParticle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.originX = this.x;
+                this.originY = this.y;
+                this.size = 0.75 + Math.random() * 1.25;
+                this.vx = (Math.random() - 0.5) * 0.3;
+                this.vy = (Math.random() - 0.5) * 0.3;
+                this.alpha = 0.15 + Math.random() * 0.35;
+            }
+            update() {
+                // 느린 부유 이동
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // 경계 반사
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+                // 마우스 반발력
+                const dx = this.x - mouse.x;
+                const dy = this.y - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < MOUSE_RADIUS) {
+                    const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS;
+                    const angle = Math.atan2(dy, dx);
+                    this.x += Math.cos(angle) * force * 8;
+                    this.y += Math.sin(angle) * force * 8;
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(55, 95, 255, ${this.alpha})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            particles.push(new FloatingParticle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+    }
+
     // --- 이메일 복사 ---
     const emailCopy = document.getElementById('emailCopy');
     if (emailCopy) {
