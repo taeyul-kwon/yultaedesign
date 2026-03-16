@@ -34,23 +34,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 히어로 부유 파티클 시스템 ---
+    // --- 히어로 부유 파티클 시스템 (모바일 최적화) ---
     const canvas = document.getElementById('particleCanvas');
     const heroEl = document.getElementById('hero');
     if (canvas && heroEl) {
         const ctx = canvas.getContext('2d');
         let mouse = { x: -9999, y: -9999 };
-        const PARTICLE_COUNT = 1000;
-        const MOUSE_RADIUS = 120;
+        const isMobile = window.innerWidth <= 768;
+        const PARTICLE_COUNT = isMobile ? 300 : 1000;
+        const MOUSE_RADIUS = isMobile ? 80 : 120;
         const particles = [];
+        let animationId;
+        let isVisible = true;
 
         function resizeCanvas() {
-            canvas.width = heroEl.offsetWidth;
-            canvas.height = heroEl.offsetHeight;
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = heroEl.offsetWidth * dpr;
+            canvas.height = heroEl.offsetHeight * dpr;
+            canvas.style.width = heroEl.offsetWidth + 'px';
+            canvas.style.height = heroEl.offsetHeight + 'px';
+            ctx.scale(dpr, dpr);
         }
         resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            particles.forEach(p => p.reset());
+        });
 
+        // 마우스 이벤트
         heroEl.addEventListener('mousemove', (e) => {
             const rect = heroEl.getBoundingClientRect();
             mouse.x = e.clientX - rect.left;
@@ -61,30 +72,48 @@ document.addEventListener('DOMContentLoaded', () => {
             mouse.y = -9999;
         });
 
+        // 터치 이벤트 (모바일)
+        heroEl.addEventListener('touchmove', (e) => {
+            const rect = heroEl.getBoundingClientRect();
+            const touch = e.touches[0];
+            mouse.x = touch.clientX - rect.left;
+            mouse.y = touch.clientY - rect.top;
+        }, { passive: true });
+        heroEl.addEventListener('touchend', () => {
+            mouse.x = -9999;
+            mouse.y = -9999;
+        });
+
+        // 페이지 가시성 - 백그라운드 시 애니메이션 정지 (배터리 절약)
+        document.addEventListener('visibilitychange', () => {
+            isVisible = !document.hidden;
+            if (isVisible && !animationId) animateParticles();
+        });
+
+        const canvasW = () => heroEl.offsetWidth;
+        const canvasH = () => heroEl.offsetHeight;
+
         class FloatingParticle {
             constructor() {
                 this.reset();
             }
             reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.originX = this.x;
-                this.originY = this.y;
+                this.x = Math.random() * canvasW();
+                this.y = Math.random() * canvasH();
                 this.size = 0.75 + Math.random() * 1.25;
                 this.vx = (Math.random() - 0.5) * 0.3;
                 this.vy = (Math.random() - 0.5) * 0.3;
                 this.alpha = 0.15 + Math.random() * 0.35;
             }
             update() {
-                // 느린 부유 이동
                 this.x += this.vx;
                 this.y += this.vy;
 
-                // 경계 반사
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                const w = canvasW();
+                const h = canvasH();
+                if (this.x < 0 || this.x > w) this.vx *= -1;
+                if (this.y < 0 || this.y > h) this.vy *= -1;
 
-                // 마우스 반발력
                 const dx = this.x - mouse.x;
                 const dy = this.y - mouse.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
@@ -108,12 +137,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (!isVisible) { animationId = null; return; }
+            const w = canvasW();
+            const h = canvasH();
+            ctx.clearRect(0, 0, w, h);
             particles.forEach(p => {
                 p.update();
                 p.draw();
             });
-            requestAnimationFrame(animateParticles);
+            animationId = requestAnimationFrame(animateParticles);
         }
         animateParticles();
     }
